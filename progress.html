@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker - SSC CHSL Prep</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Track Your Progress</h1>
+        <nav><a href="index.html">Home</a> | ... </nav>
+    </header>
+    <main>
+        <form id="tracker">
+            <label>Date: <input type="date" id="date"></label><br>
+            <label>Topic: <input type="text" id="topic"></label><br>
+            <label>Hours Studied: <input type="number" id="hours"></label><br>
+            <label>Mock Score: <input type="number" id="score"></label><br>
+            <button type="button" onclick="addEntry()">Add Entry</button>
+        </form>
+        <ul id="entries"></ul>
+    </main>
+    <footer>© 2024 [Your Name].</footer>
+    <script>
+        // Foolproof local storage tracker (saves data in browser)
+        function addEntry() {
+            const date = document.getElementById('date').value;
+            const topic = document.getElementById('topic').value;
+            const hours = document.getElementById('hours').value;
+            const score = document.getElementById('score').value;
+            if (!date || !topic) return alert('Fill required fields!');
+            const entry = `${date}: ${topic} - ${hours}hrs, Score: ${score}`;
+            const ul = document.getElementById('entries');
+            const li = document.createElement('li');
+            li.textContent = entry;
+            ul.appendChild(li);
+            localStorage.setItem('progress', ul.innerHTML); // Persists across sessions
+        }
+        // Load on page load
+        window.onload = () => {
+            const saved = localStorage.getItem('progress');
+            if (saved) document.getElementById('entries').innerHTML = saved;
+        };
+    </script>
+</body>
+</html>
