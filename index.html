@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSC CHSL 2025 Prep Crash Course</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>SSC CHSL November 2025 Crash Course</h1>
+        <nav>
+            <a href="index.html">Home</a> | <a href="syllabus.html">Syllabus</a> | <a href="study-plan.html">Study Plan</a> | <a href="resources.html">Resources</a> | <a href="progress.html">Progress</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Welcome, [Your Name]!</h2>
+        <p>Countdown to Exam: <span id="countdown"></span></p>
+        <p>This site is your personal hub for SSC CHSL prep. Stay focused and track your journey.</p>
+        <img src="assets/ssc-logo.png" alt="SSC Logo" width="200">
+    </main>
+    <footer>© 2024 [Your Name]. All rights reserved.</footer>
+    <script>
+        // Simple countdown script (foolproof, no errors if date is invalid)
+        const examDate = new Date('2025-11-01');
+        function updateCountdown() {
+            const now = new Date();
+            const diff = examDate - now;
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('countdown').textContent = days + ' days left';
+            } else {
+                document.getElementById('countdown').textContent = 'Exam day!';
+            }
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 86400000); // Update daily
+    </script>
+</body>
+</html>
